@@ -1,0 +1,28 @@
+<div>
+
+    <h1>{{optionCtrl.question.Title}}</h1>
+
+    <form name="pollForm" ng-submit="optionCtrl.vote()" >
+        <!--<div style="display:none"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="put"><input name="authenticity_token" type="hidden" value="eo0VmQcFI4y8H1NFTd++gdSgrUmfdAMxSHNJ+hAdOLI="></div>-->
+        <!--<input id="vote_question_id" name="vote[question_id]" type="hidden" value="ukb2NQtysb6QUEw4HFF_NQ">-->
+
+        <fieldset>
+            <div class="field" ng-repeat="option in optionCtrl.options">
+                <label class="radio" for="{{option.objectId}}">
+                    <input class="visually-hidden" id="{{option.objectId}}" name="vote[{{option.objectId}}]"
+                       ng-model="$parent.selectedOptionId"
+                       type="radio" value="{{option.objectId}}">
+                    <span class="outer"><span class="inner"></span></span>{{option.Title}}
+                    </input>
+                </label>
+            </div>
+        </fieldset>
+        <div class="actions">
+            <input type="submit" value="Vote" ng-disabled="!selectedOptionId" />
+        </div>
+    </form>
+
+    <p><a ng-href="#/poll/{{optionCtrl.question.objectId}}/result">Go to results</a></p>
+
+</div>
+

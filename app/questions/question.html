@@ -1,0 +1,9 @@
+<h1>Questions</h1>
+
+<form>
+<fieldset>
+    <div class="field" ng-repeat="question in questionCtrl.questions">
+        <label class="radio"  id="{{question.objectId}}"><a href="" ng-click="questionCtrl.openPoll(question)">{{question.Title}}</a></label>
+    </div>
+</fieldset>
+</form>
