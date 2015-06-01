@@ -5,7 +5,9 @@
         .module('pollApp', ['ngSanitize','ngResource', 'ngRoute'])
         .constant('appConfig', {
             'parseAppId': '[YOUR PARSE APP ID]',
-            'parseRestApiId': '[YOUR PARSE REST API ID]'
+            'parseRestApiId': '[YOUR PARSE REST API ID]',
+            'streamdataioAppToken': '[YOUR STREAMDATA.IO APP TOKEN]',
+            'streamdataioPrivateKey': '[YOUR STREAMDATA.IO PRIVATE KEY]'
         })
         .config(function($httpProvider) {
            $httpProvider.interceptors.push('ParseInterceptor');
