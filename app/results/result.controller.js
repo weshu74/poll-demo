@@ -55,8 +55,6 @@
 
              $scope.chart.update();
            } else if (total > 0) {
-console.info('****' + JSON.stringify(data));
-console.info('----' + JSON.stringify($scope.chartData));
             $scope.chart = new Chart($scope.ctx).Doughnut($scope.chartData, $scope.chartOptions);
 
            }
