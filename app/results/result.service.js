@@ -2,45 +2,49 @@
 
 (function() {
 
-     function ResultService($resource, $q, OptionService) {
-        return {
-          getPoll: function(questionId) {
-            var deferred = $q.defer();
-            var param = {question_id: questionId};
-            var jsonParam = angular.toJson(param);
+  function ResultService($resource, $q, OptionService) {
+    function mapToVotes(votesResultSet, options) {
 
-            OptionService.get({'where': jsonParam}).$promise.then(function(options) {
-                $resource('https://api.parse.com/1/classes/Vote?where=' + jsonParam).get().$promise.then(function(votes) {
-                  var optionsMap = {};
+      var optionsMap = {};
+      options.forEach(function (option) {
+        optionsMap[option.objectId] = {label: option.Title, value: 0};
+      });
 
-                  options.forEach(function(option){
-                    optionsMap[option.objectId] = { label: option.Title, value: 0 };
-                  });
+      votesResultSet.results.forEach(function (vote) {
+        optionsMap[vote.option_id].value++;
+      });
 
-                  votes.results.forEach(function(vote){
-                    optionsMap[vote.option_id].value++;
-                  });
+      var votes = [];
+      for (var option in optionsMap) {
+        votes.push(optionsMap[option]);
+      }
 
-                  var results = [];
-                  for(var option in optionsMap) {
-                    results.push(optionsMap[option]);
-                  }
+      return votes;
+    };
 
-                  deferred.resolve(results);
-                });
-            });
+    return {
+      getPoll: function(questionId) {
+        var deferred = $q.defer();
+        var param = {question_id: questionId};
+        var jsonParam = angular.toJson(param);
 
-            return deferred.promise;
-          },
-          save: function(body) {
-            return $resource('https://api.parse.com/1/classes/Vote').save(body);
-          }
-        }
-     };
+        OptionService.get({'where': jsonParam}).$promise.then(function(options) {
+          $resource('https://api.parse.com/1/classes/Vote?where=' + jsonParam).get().$promise.then(function(votesResultSet) {
+            var results = mapToVotes(votesResultSet, options);
+            deferred.resolve(results);
+          });
+        });
 
- angular
-   .module('pollApp')
-   .factory('ResultService', ['$resource', '$q', 'OptionService', ResultService]);
+        return deferred.promise;
+      },
+      save: function(body) {
+        return $resource('https://api.parse.com/1/classes/Vote').save(body);
+      }
+    }
+  };
 
- })();
+  angular
+    .module('pollApp')
+    .factory('ResultService', ['$resource', '$q', 'OptionService', ResultService]);
 
+})();
