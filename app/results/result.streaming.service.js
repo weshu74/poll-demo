@@ -39,10 +39,6 @@
           // create the streamdata.io source
           var streamdata = streamdataio.createEventSource(url, headers);
 
-          streamdata.streamdataConfig.PROTOCOL = 'http://';
-          streamdata.streamdataConfig.HOST = 'proxy.streamdata.io';
-          streamdata.streamdataConfig.PORT = '9080';
-
           streamdata.onData(function (data) {
             streamdata.resultSet = data;
             var votes = mapToVotes(data, options);
