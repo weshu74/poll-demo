@@ -62,9 +62,18 @@
 
          var streamdataPromise = StreamingResultService.getPoll(questionId, createChart, updateChart);
          streamdataPromise.then(function(streamdata) {
+           vm.streamdata = streamdata;
            streamdata.open();
          });
        };
+
+       $scope.$on("$destroy", function() {
+         // close the stream when we leave the page
+         if (vm.streamdata) {
+           vm.streamdata.close();
+
+         }
+       });
 
        vm.init();
 
