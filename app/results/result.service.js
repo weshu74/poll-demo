@@ -29,7 +29,7 @@
         var jsonParam = angular.toJson(param);
 
         OptionService.get({'where': jsonParam}).$promise.then(function(options) {
-          $resource('https://api.parse.com/1/classes/Vote?where=' + jsonParam).get().$promise.then(function(votesResultSet) {
+          $resource('https://api.parse.com/1/classes/Vote?limit=1000000&where=' + jsonParam).get().$promise.then(function(votesResultSet) {
             var results = mapToVotes(votesResultSet, options);
             deferred.resolve(results);
           });
