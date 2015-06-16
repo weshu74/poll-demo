@@ -20,5 +20,5 @@ Follow these steps to make it work:
 5. Declare your streamdata.io app toket in app.js
 6. Save and launch index.html in your favorite browser (works with Chrome, Firefox, Safari, and IE 10+)
 
-You are done! Use Parse UI in order to declare your surveys (questions and options), host it on a server (we use a PHP cartridge in OpenShift), and give the URL to your audience to start the poll! 
+You are done! Use Parse UI in order to declare your surveys (questions and options), host it on a server (we use a PHP cartridge in OpenShift), and give the URL to your audience to start the poll. The UI gets udpated automatically as the audience votes for their favorite option. 
  
