@@ -31,13 +31,12 @@
         OptionService.get({'where': jsonParam}).$promise.then(function (options) {
           var url = 'https://api.parse.com/1/classes/Vote?limit=1000000&where=' + encodeURIComponent('{\"question_id\": \"' + questionId + '\"}');
 
-          // you can store your key pair in a json file instead, more details in documentation
-          streamdataio.Pk = appConfig.streamdataioAppToken;
-          streamdataio.pk = appConfig.streamdataioPrivateKey;
+          var appToken = appConfig.streamdataioAppToken;
 
           var headers = ['X-Parse-Application-ID: ' + appConfig.parseAppId, 'X-Parse-REST-API-Key:' + appConfig.parseRestApiId];
+
           // create the streamdata.io source
-          var streamdata = streamdataio.createEventSource(url, headers);
+          var streamdata = streamdataio.createEventSource(url, appToken, headers);
 
           streamdata.onData(function (data) {
             // add a callback when data is sent by streamdata.io: it's the first set of data sent (snapshot)
