@@ -17,7 +17,7 @@ Follow these steps to make it work:
     * question_id
 3. Declare your Parse Application ID, and REST API Key in app.js (Parse keys can be found in Settings tab)
 4. Create an account on streamdata.io to get your streamdata.io app token at https://portal.streamdata.io/#/register.
-5. Declare your streamdata.io app toket in app.js
+5. Declare your streamdata.io app token in app.js
 6. Save and launch index.html in your favorite browser (works with Chrome, Firefox, Safari, and IE 10+)
 
 You are done! Use Parse UI in order to declare your surveys (questions and options), host it on a server (we use a PHP cartridge in OpenShift), and give the URL to your audience to start the poll. The UI gets udpated automatically as the audience votes for their favorite option. 
