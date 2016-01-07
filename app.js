@@ -6,7 +6,7 @@
         .constant('appConfig', {
             'parseAppId': 'S8jEttKmQZNymdZt2t0G3jtwqzcUGnWUL2OFeoME',
             'parseRestApiId': 'hoqySFZcgLD5LYid4u2daPcPhoIsVgQjPNNebgJq',
-            'streamdataioAppToken': '[YOUR STREAMDATA.IO APP TOKEN]',
+            'streamdataioAppToken': 'NTJhYzdhMWYtZjZhZi00Y2I5LWJlY2QtMjZiM2E0MDFhN2Ix',
         })
         .config(function($httpProvider) {
            $httpProvider.interceptors.push('ParseInterceptor');
