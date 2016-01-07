@@ -4,8 +4,8 @@
     angular
         .module('pollApp', ['ngSanitize','ngResource', 'ngRoute'])
         .constant('appConfig', {
-            'parseAppId': '[YOUR PARSE APP ID]',
-            'parseRestApiId': '[YOUR PARSE REST API ID]',
+            'parseAppId': 'S8jEttKmQZNymdZt2t0G3jtwqzcUGnWUL2OFeoME',
+            'parseRestApiId': 'hoqySFZcgLD5LYid4u2daPcPhoIsVgQjPNNebgJq',
             'streamdataioAppToken': '[YOUR STREAMDATA.IO APP TOKEN]',
         })
         .config(function($httpProvider) {
